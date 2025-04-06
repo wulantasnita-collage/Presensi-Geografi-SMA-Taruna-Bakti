@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi Siswa - SMA Taruna Bakti Bandung</title>
+    <!-- Link Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-black text-white p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="text-white text-2xl font-bold">
+                <a href="#">Presensi Mata Pelajaran Geografi</a>
+            </div>
+
+            <div class="hidden lg:flex space-x-6">
+                <a href="#home" class="text-white hover:text-gray-400">Home</a>
+                <a href="#about" class="text-white hover:text-gray-400">About</a>
+                <a href="#contact" class="text-white hover:text-gray-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section: Home (Profil Sekolah) -->
+    <section id="home" class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+                SMA Taruna Bakti Bandung
+            </h2>
+            <p class="mt-4 text-lg sm:text-xl">
+                Sekolah Menengah Atas yang berfokus pada pengembangan akademis dan karakter siswa untuk mempersiapkan masa depan yang gemilang.
+            </p>
+            <button id="show-form-btn" class="mt-8 inline-block px-8 py-3 text-lg font-medium text-black bg-white rounded-lg hover:bg-gray-100">
+                Mulai Presensi
+            </button>
+        </div>
+    </section>
+
+    <!-- Section: About (Pelajaran Geografi) -->
+    <section id="about" class="py-16 bg-white text-black">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold">Tentang Pelajaran Geografi</h2>
+            <p class="mt-4 text-lg sm:text-xl">
+                Pelajaran Geografi di SMA Taruna Bakti Bandung memberikan pemahaman yang mendalam mengenai alam, peta, serta fenomena geosfer
+                yang mempengaruhi kehidupan sehari-hari. Bagaimana pentingnya memahami peta dunia dan menghubungkan
+                fenomena geografis dengan aspek sosial, ekonomi, dan budaya.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section: Contact (WhatsApp) -->
+    <section id="contact" class="py-16 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold">Kontak Kami</h2>
+            <p class="mt-4 text-lg sm:text-xl">
+                Untuk pertanyaan lebih lanjut, Anda dapat menghubungi guru bersangkutan melalui WhatsApp di nomor berikut:
+            </p>
+            <a href="https://wa.me/62881023003590" class="mt-8 inline-block px-8 py-3 text-lg font-medium text-black bg-white rounded-lg hover:bg-gray-100">
+                Hubungi via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Form Presensi (Tersembunyi awalnya) -->
+    <div id="presensi-form" class="hidden bg-gray-100 p-8 max-w-md mx-auto mt-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold text-center mb-6">Isi Data Presensi</h3>
+        <form id="form-presensi">
+            <!-- Input Nama -->
+            <div class="mb-4">
+                <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" class="mt-1 p-2 w-full border border-gray-300 rounded-md" required>
+            </div>
+
+            <!-- Opsi Kehadiran -->
+            <div class="mb-4">
+                <label for="kehadiran" class="block text-sm font-medium text-gray-700">Status Kehadiran</label>
+                <select id="kehadiran" name="kehadiran" class="mt-1 p-2 w-full border border-gray-300 rounded-md" required>
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak_hadir">Tidak Hadir</option>
+                </select>
+            </div>
+
+            <!-- Tombol Kirim -->
+            <div class="text-center">
+                <button type="submit" class="px-8 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                    Kirim
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pesan setelah mengirim -->
+    <div id="success-message" class="hidden text-center text-green-600 mt-8">
+        <p class="text-xl">Presensi Anda berhasil dikirim. Terima kasih!</p>
+    </div>
+
+    <!-- JavaScript untuk Menangani Form dan Tombol -->
+    <script>
+        const showFormButton = document.getElementById('show-form-btn');
+        const presensiForm = document.getElementById('presensi-form');
+        const formPresensi = document.getElementById('form-presensi');
+        const successMessage = document.getElementById('success-message');
+
+        // Menampilkan form saat tombol "Mulai Presensi" diklik
+        showFormButton.addEventListener('click', () => {
+            presensiForm.classList.remove('hidden');
+            showFormButton.classList.add('hidden');
+        });
+
+        // Menangani pengiriman form
+        formPresensi.addEventListener('submit', (event) => {
+            event.preventDefault(); // Mencegah form mengirim data secara otomatis
+
+            // Mengambil data dari form
+            const nama = document.getElementById('nama').value;
+            const kehadiran = document.getElementById('kehadiran').value;
+
+            // Tampilkan pesan sukses
+            presensiForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
